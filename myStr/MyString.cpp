@@ -269,3 +269,53 @@ void MyString::operator()()
 {
 	Print();
 }
+
+MyString::MyString(MyString&& obj)
+{
+	length = obj.length;
+	str = obj.str;
+	obj.str = nullptr;
+	obj.length = 0;
+}
+
+MyString& MyString::operator=(MyString&& obj)
+{
+	if (this != &obj)
+	{
+		delete[] str;
+		length = obj.length;
+		str = obj.str;
+		obj.str = nullptr;
+		obj.length = 0;
+	}
+	return *this;
+}
+ ostream& operator<<(ostream& os, MyString obj)
+{
+	obj.Print();
+	return os;
+}
+
+istream& operator>>(istream& is, MyString& obj)
+{
+	obj.Input();
+	return is;
+}
+
+MyString& MyString::operator+=(const char* addedText)
+{
+	if (addedText == nullptr)
+	{
+		return *this;
+	}
+
+	int addLength = strlen(addedText);
+	char* newStr = new char[length + addLength + 1];
+	strcpy_s(newStr, length + 1, str);
+	strcat_s(newStr, length + addLength + 1, addedText);
+
+	delete[] str;
+	str = newStr;
+	length += addLength;
+	return *this;
+}

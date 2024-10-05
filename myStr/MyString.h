@@ -23,4 +23,7 @@ public:
 	MyString operator=(const MyString& obj);
 	MyString operator[](int index);
 	void operator()();
+	MyString(MyString&& obj);
+	MyString& operator=(MyString&& obj);
+	MyString& operator+=(const char* addedText);
 };
