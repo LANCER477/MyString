@@ -302,17 +302,17 @@ istream& operator>>(istream& is, MyString& obj)
 	return is;
 }
 
-MyString& MyString::operator+=(const char* addedText)
+MyString& MyString::operator+=(const char* text)
 {
-	if (addedText == nullptr)
+	if (text == nullptr)
 	{
 		return *this;
 	}
 
-	int addLength = strlen(addedText);
+	int addLength = strlen(text);
 	char* newStr = new char[length + addLength + 1];
 	strcpy_s(newStr, length + 1, str);
-	strcat_s(newStr, length + addLength + 1, addedText);
+	strcat_s(newStr, length + addLength + 1, text);
 
 	delete[] str;
 	str = newStr;

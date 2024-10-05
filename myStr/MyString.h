@@ -27,3 +27,5 @@ public:
 	MyString& operator=(MyString&& obj);
 	MyString& operator+=(const char* addedText);
 };
+
+MyString operator+(const char* left, const MyString& right);
