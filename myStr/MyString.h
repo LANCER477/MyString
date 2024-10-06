@@ -26,6 +26,7 @@ public:
 	MyString(MyString&& obj);
 	MyString& operator=(MyString&& obj);
 	MyString& operator+=(const char* addedText);
+	MyString(initializer_list<char> a);
 };
 
-MyString operator+(const char* left, const MyString& right);
+

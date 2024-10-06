@@ -319,3 +319,22 @@ MyString& MyString::operator+=(const char* text)
 	length += addLength;
 	return *this;
 }
+
+MyString::MyString(initializer_list<char> a)
+{
+	cout << "Initializer_list constructor\n";
+	cout << a.size() << endl;
+
+	length = a.size();
+	str = new char[length + 1]; 
+
+	char* temp = str;  
+
+	
+	for (auto x = a.begin(); x != a.end(); ++x) {
+		*temp = *x;
+		temp++;
+	}
+
+	*temp = '\0'; 
+}
